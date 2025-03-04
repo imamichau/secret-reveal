@@ -4,30 +4,29 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Video Surprise</title>
-    <link rel="stylesheet" href="css/video.css"> <!-- Path updated to /css/styles.css -->
+    <link rel="stylesheet" href="css/video.css">
 </head>
 <body>
-    <!-- Video as background, muted for autoplay -->
+    <!-- Video background -->
     <video class="video-background" autoplay loop muted playsinline id="bg-video">
         <source src="assets/video/gift.mp4" type="video/mp4">
         Your browser does not support the video tag.
     </video>
     
-
-    <!-- Overlay to make text more readable -->
+    <!-- Dark overlay -->
     <div class="overlay"></div>
 
-    <!-- Main content container -->
+    <!-- Main content -->
     <div class="container">
         <div class="content">
-            <h1>Your Special Surprise</h1>
-            <p>Enjoy the moment!</p>
-
-            <!-- Button to toggle sound on the video -->
+            <h1>Enjoy the moment!</h1>
+            <h2>Robbie Williams Live</h2>
+            <p>🎟️ 2 Tickets</p>
+            <p>📅 09 Sep | 📍 TAURON Arena Kraków</p>
             <button class="sound-button" onclick="toggleSound()">Turn Sound On</button>
         </div>
     </div>
 
-    <script src="js/video.js"></script> <!-- Path updated to /js/video.js -->
+    <script src="js/video.js"></script>
 </body>
 </html>
