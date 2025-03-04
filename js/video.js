@@ -14,10 +14,13 @@ function toggleSound() {
 
 // Check if the video is loaded and ready to play
 window.onload = function() {
-    video.oncanplaythrough = function() {
-        console.log('Video can play through!');
-        video.play(); // Play the video when it can start
-    };
+    video.play().catch(function(error) {
+        // Play video on interaction if autoplay fails
+        console.log('Autoplay failed, trying to play on user interaction');
+        document.querySelector('body').addEventListener('click', function() {
+            video.play();
+        });
+    });
 
     video.onerror = function() {
         console.error('Error loading video');
