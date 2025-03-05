@@ -3,7 +3,7 @@ const soundButton = document.querySelector('.sound-button');
 const loadingScreen = document.querySelector('.loading-screen');
 const container = document.querySelector('.container');
 
-// Function to toggle sound on and off
+// Function to toggle sound on/off
 function toggleSound() {
     if (video.muted) {
         video.muted = false;
@@ -14,29 +14,40 @@ function toggleSound() {
     }
 }
 
-// Show the loading screen
+// Show the loading screen initially
 loadingScreen.style.display = 'flex';
 
-// Hide the loading screen and show the content after the video has loaded
-video.addEventListener('canplaythrough', function () {
-    console.log('Video is ready to play.');
+// Track video loading progress
+video.addEventListener('progress', function () {
+    const buffered = video.buffered; // Get buffered data info
+    if (buffered.length > 0) {
+        const bufferedEnd = buffered.end(buffered.length - 1); // End of the buffered range
 
-    // Hide the loading screen
-    loadingScreen.style.display = 'none';
+        // If at least 5 seconds of video is buffered
+        if (bufferedEnd >= 5) {
+            console.log('Enough video is buffered. Showing content.');
 
-    //Show the content
-    container.style.display = 'flex';
+            // Hide the loading screen
+            loadingScreen.style.display = 'none';
 
-    // Run the video
-    video.play().catch(function (error) {
-        console.log('Autoplay failed, trying to play on user interaction');
-        document.querySelector('body').addEventListener('click', function () {
-            video.play();
-        });
-    });
+            // Show the main content
+            container.style.display = 'flex';
+
+            // Start playing the video
+            video.play().catch(function (error) {
+                console.log('Autoplay failed, trying to play on user interaction');
+                document.querySelector('body').addEventListener('click', function () {
+                    video.play();
+                });
+            });
+
+            // Remove the progress event listener to avoid further calls
+            video.removeEventListener('progress', arguments.callee);
+        }
+    }
 });
 
-// Error handling
+// Handle video loading errors
 video.onerror = function () {
     console.error('Error loading video');
     alert('There was an error loading the video. Please check the file path.');

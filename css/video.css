@@ -1,3 +1,4 @@
+/* General styles */
 body {
     font-family: 'Garamond', serif;
     margin: 0;
@@ -5,7 +6,7 @@ body {
     overflow: hidden; /* Hide scrollbars */
 }
 
-/* Video that will be used as the background */
+/* Video as a background */
 .video-background {
     position: fixed;
     top: 0;
@@ -16,10 +17,11 @@ body {
     z-index: -1; /* Keep the video in the background */
 }
 
+/* Main container */
 .container {
     width: 100%;
     height: 100vh;
-    display: flex;
+    display: none; /* Hidden by default */
     justify-content: center;
     align-items: center;
     text-align: center;
@@ -34,7 +36,7 @@ h1 {
     text-transform: uppercase;
 }
 
-/* Add a dark overlay to make the text more readable */
+/* Dark overlay for better text readability */
 .overlay {
     position: absolute;
     top: 0;
@@ -66,19 +68,19 @@ h1 {
     background-color: #ae1047;
 }
 
-/* Styles for the loading screen */
+/* Loading screen */
 .loading-screen {
     position: fixed;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    background: rgba(0, 0, 0, 0.9); /* Semi-transparent black background */
+    background: rgba(0, 0, 0, 0.9); /* Dark background */
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column;
-    z-index: 10; /* Make sure it's on top of everything */
+    z-index: 10; /* Above all other elements */
     color: white;
     font-size: 1.2em;
 }
@@ -96,9 +98,4 @@ h1 {
 @keyframes spin {
     0% { transform: rotate(0deg); }
     100% { transform: rotate(360deg); }
-}
-
-/* Hide the main content until the video is loaded */
-.container {
-    display: none; /* Hide the container by default */
 }
