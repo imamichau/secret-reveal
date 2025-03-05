@@ -24,7 +24,7 @@ video.addEventListener('progress', function () {
         const bufferedEnd = buffered.end(buffered.length - 1); // End of the buffered range
 
         // If at least 5 seconds of video is buffered
-        if (bufferedEnd >= 5) {
+        if (bufferedEnd >= 3) {
             console.log('Enough video is buffered. Showing content.');
 
             // Hide the loading screen
