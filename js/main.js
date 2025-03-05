@@ -4,7 +4,7 @@ function checkText() {
     const userInput = document.getElementById("userInput").value;
 
     // If the user input matches the correct text, redirect to video page
-    if (userInput === correctText) {
+    if (userInput === correctText.trim()) {
         window.location.href = "video.html"; // Redirect to the video page
     } else {
         alert("Incorrect phrase. Please try again."); // Show alert for incorrect input
